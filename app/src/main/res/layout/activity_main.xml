@@ -62,7 +62,7 @@
                 android:textColor="@color/white"
                 android:textSize="32dp"
                 android:layout_margin="12dp"
-                android:id="@+id/button_percentagr"
+                android:id="@+id/button_percentage"
                 app:backgroundTint="#E6BF4B"
                 android:text="%"/>
             <com.google.android.material.button.MaterialButton
