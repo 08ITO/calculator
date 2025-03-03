@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String buttonText = button.getText().toString();
         String dataToCalculate = inputTV.getText().toString();
 
-        // Handle button clicks
         if (buttonText.equals("AC")) {
             // Clear all input and output
             inputTV.setText("");
@@ -96,6 +95,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             outputTV.setText(result);
             inputTV.setText(result); // Optional: Set the result as the new input
             return;
+        } else if (buttonText.equals("%")) {
+            // Handle percentage calculation
+            if (!dataToCalculate.isEmpty()) {
+                try {
+                    // Evaluate the current expression
+                    String currentResult = getResult(dataToCalculate);
+                    double value = Double.parseDouble(currentResult);
+
+                    // Calculate percentage (e.g., 10% of value)
+                    double percentageValue = value / 100;
+                    dataToCalculate = String.valueOf(percentageValue);
+
+                    // Update the input and output
+                    inputTV.setText(dataToCalculate);
+                    outputTV.setText(dataToCalculate);
+                    return;
+                } catch (Exception e) {
+                    outputTV.setText("Err");
+                    return;
+                }
+            }
         } else {
             // Append the button text to the input
             dataToCalculate = dataToCalculate + buttonText;
